@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIT Nagpur - Computer Science Department</title>
+    <style>
+        /* Color Palette: Deep Blue (Trust), Gold (Aesthetic Accent), White/Light Grey (Clean Contrast) */
+        :root {
+            --primary-color: #0f2027; /* Deep Blue */
+            --accent-color: #d4af37;  /* Gold */
+            --text-color: #333333;    /* Dark Grey for readability */
+            --bg-color: #f8f9fa;      /* Light Grey background */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #203a43, var(--primary-color));
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 10px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Functional Safe Link */
+        .btn-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-link:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>SIT Nagpur</h1>
+        <p style="color: var(--accent-color); font-style: italic;">Department of Computer Science & Engineering</p>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Courses</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <section>
+            <h2>Welcome to our Department</h2>
+            <p>Welcome to the Department of Computer Science and Engineering at Symbiosis Institute of Technology (SIT), Nagpur. We focus on cutting-edge innovations, quality tech education, and hands-on practical skills to prepare students for global tech industries.</p>
+        </section>
+
+        <section>
+            <h2>Student Portal</h2>
+            <p>Access attendance data, academic grades, examination schedules, and general profiles using the portal below.</p>
+            
+            <!-- Safe Link: Uses javascript:void(0) to ensure the link works safely even if the URL target is currently blank/empty -->
+            <a href="javascript:void(0);" onclick="alert('Student Info Page is currently being updated!');" class="btn-link">
+                View Student Info Page &rarr;
+            </a>
+        </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2026 SIT Nagpur. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript Welcome Alert Box -->
+    <script>
+        // Displays the welcome alert instantly when the web page loads
+        window.onload = function() {
+            alert("Welcome to SIT Nagpur");
+        };
+    </script>
+
+</body>
+</html>
