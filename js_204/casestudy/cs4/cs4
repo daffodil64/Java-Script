@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ATM PIN Verification</title>
+    <style>
+        body {
+            /* Changed background from light grey to soft light green */
+            background-color: #f0f7f4; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        h2 {
+            /* Changed heading text from blue to forest green */
+            color: #2e7d32; 
+            margin: 5px 0;
+        }
+        h3 {
+            color: #333;
+            margin-top: 15px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            /* Added matching dark green border layout accent */
+            border: 1px solid #2e7d32; 
+            border-radius: 4px;
+            text-align: center;
+            letter-spacing: 3px;
+            outline: none;
+        }
+        button {
+            display: block;
+            margin: 15px auto 0;
+            padding: 8px 20px;
+            font-size: 15px;
+            /* Changed button background from blue to forest green */
+            background-color: #2e7d32; 
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            /* Changed hover state to a darker shade of green */
+            background-color: #1b5e20; 
+        }
+        #result {
+            margin: 20px auto 0;
+            padding: 15px;
+            max-width: 400px;
+            font-size: 16px;
+            color: #333;
+            /* Added structured light green display background layout for result */
+            background-color: #e8f5e9; 
+            border-left: 5px solid #2e7d32;
+            border-radius: 4px;
+            line-height: 1.6;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <h3>Enter your 6-digit PIN:</h3>
+    <!-- Changed type to password to securely mask inputs for real ATM simulations -->
+    <input type='password' id='pin' maxlength="6" placeholder="••••••" />
+    <button onClick="verifyPin()">Submit</button>
+    
+    <div id='result'>Fill out the verification field above to review authentication telemetry.</div>
+
+    <script>
+        // FUNCTION DECLARATION
+        // Reverses the entered PIN
+        function reversePin(pin) {
+            return pin.split("").reverse().join("");
+        }
+
+        // FUNCTION EXPRESSION
+        // Checks whether the PIN is a palindrome (reads same forward and backward)
+        var isPalindrome = function(pin) {
+            var reversed = reversePin(pin);
+            return pin === reversed;
+        };
+
+        // ARROW FUNCTION
+        // Displays the security message based on the result
+        var getMessage = (palindromeCheck) => {
+            if (palindromeCheck) {
+                return "<strong>Security Status:</strong> Warning - Symmetrical pattern detected! ⚠️";
+            } else {
+                return "<strong>Security Status:</strong> Passed standard clearance index safely. ✅";
+            }
+        };
+
+        // MAIN FUNCTION (called on button click)
+        function verifyPin() {
+            var pin = document.getElementById("pin").value.trim();
+
+            // Validate input: non-empty, 6 digits, numeric
+            if (pin === "" || pin.length !== 6 || isNaN(pin)) {
+                alert("Please enter a valid 6-digit PIN!");
+                return;
+            }
+
+            var reversed = reversePin(pin);
+            var palindromeCheck = isPalindrome(pin);
+            var message = getMessage(palindromeCheck);
+
+            // Alert user if the PIN is a palindrome
+            if (palindromeCheck) {
+                alert("Security Alert!\nYour PIN is a palindrome.\nFor better security, please change your ATM PIN.");
+            }
+
+            // Render result layout parameters cleanly using template updates
+            document.getElementById("result").innerHTML = 
+                "<strong>PIN Entered:</strong> " + pin + "<br>" + 
+                "<strong>Reversed PIN:</strong> " + reversed + "<br>" + 
+                message;
+        }
+    </script>
+</body>
+</html>

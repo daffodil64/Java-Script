@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Piyush Chopade</title>
+</head>
+<body>
+<h2>Piyush Chopade 1509</h2>
+<h2>Student Grading System</h2>
+<h3>Enter marks:</h3>
+<input type = 'number' id = 'marks'></input>
+<button onClick="checkGrade()">Submit</button>
+<p id = 'result'></p>
+<script>
+function checkGrade(){
+var marks = document.getElementById("marks").value;
+if( marks == ""){
+alert("Please Enter marks!!");
+return;
+}
+if(marks<0 || marks> 100){
+alert("Enter marks between 0 and 100");
+}
+if(marks>=90){
+grade = 'A';
+}
+else if(marks >=80){
+grade = "B";
+}
+else if(marks>=70){
+grade = "C";
+}
+else if(marks >=50){
+grade = "D"
+}
+else{
+grade = "Fail";
+}
+document.getElementById("result").innerHTML =
+"Marks =" + marks + "<br>Grade = "+ grade;
+}
+</script>
+</body>
+</html>

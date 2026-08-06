@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JS Demo</title>
+<style>
+ body {
+ background-color: #eef3ff;
+ font-family: Arial, sans-serif;
+ text-align: center;
+ padding: 40px;
+ }
+ h1 {
+ color: #1a5cff;
+ }
+ button {
+ background-color: #1a5cff;
+ color: white;
+ border: none;
+ padding: 10px 18px;
+
+ margin: 6px;
+ border-radius: 6px;
+ font-size: 15px;
+ cursor: pointer;
+ }
+ button:hover {
+ background-color: #0d3fb0;
+ }
+ #output {
+ margin-top: 20px;
+ font-size: 16px;
+ color: #333;
+ }
+</style>
+</head>
+<body>
+ <h1>Welcome to my Webpage!</h1>
+ <p id="output"></p>
+ <!-- INLINE JS -->
+<button onclick="console.log('Inline JS: Button clicked!')">Inline JS</button>
+ <!-- INTERNAL JS -->
+ <button id="internalBtn">Internal JS</button>
+
+ <!-- EXTERNAL JS -->
+ <button id="externalBtn">External JS</button>
+ <script>
+ // INTERNAL JS - shows welcome message and logs it
+ document.getElementById("output").innerText = "Welcome! Today's date is " + new
+Date().toDateString();
+ console.log("Internal JS: Page loaded, welcome message shown.");
+ document.getElementById("internalBtn").onclick = function () {
+ console.log("Internal JS: Browser - " + navigator.userAgent);
+ console.log("Internal JS: Platform - " + navigator.platform);
+ };
+ </script>
+<script src="script.js"></script>
+</body>
+</html>

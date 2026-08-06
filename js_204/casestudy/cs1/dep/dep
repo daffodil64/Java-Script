@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Information</title>
+    <style>
+        body {
+            /* Changed background from light blue to soft light green */
+            background-color: #f0f7f4; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            /* Changed header from blue to forest green */
+            background-color: #2e7d32; 
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            max-width: 500px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        table {
+            margin: 15px auto;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+        th {
+            /* Changed table header background to a soft mint tint */
+            background-color: #e8f5e9; 
+            /* Changed table header text from blue to forest green */
+            color: #2e7d32; 
+        }
+        a.btn {
+            display: inline-block;
+            margin-top: 15px;
+            /* Changed button background from blue to forest green */
+            background-color: #2e7d32; 
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        a.btn:hover {
+            /* Changed hover state to a darker shade of green */
+            background-color: #1b5e20; 
+        }
+        footer {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            margin: 30px 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Student Information</h1>
+    </header>
+
+    <div class="content">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Roll No.</th>
+                <th>Branch</th>
+            </tr>
+            <tr>
+                <td>Piyush Chopade</td>
+                <td>1509</td>
+                <td>Computer Science</td>
+            </tr>
+        </table>
+        <a class="btn" href="department.html">Back to Department Home</a>
+    </div>
+
+    <footer>Made by a Student &middot; SIT Nagpur</footer>
+
+    <script>
+        // INTERNAL JS
+        console.log("Internal JS: Student information page loaded.");
+    </script>
+
+</body>
+</html>

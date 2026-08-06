@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Shopping - Bill Calculator</title>
+    <style>
+        body {
+            /* Changed background from default white to soft light green */
+            background-color: #f0f7f4; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            /* Styled matching forest green header block */
+            background-color: #2e7d32; 
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            max-width: 500px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2e7d32; /* Forest green labels */
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            background-color: #2e7d32; /* Forest green button */
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        button:hover {
+            background-color: #1b5e20; /* Darker shade of green on hover */
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9; /* Light green receipt background */
+            border-left: 5px solid #2e7d32;
+            border-radius: 4px;
+            color: #333;
+            line-height: 1.6;
+        }
+        #result p {
+            margin: 6px 0;
+            font-size: 14px;
+        }
+        footer {
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+            margin: 30px 0 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Online Shopping Store &middot; Bill Desk</h1>
+    </header>
+
+    <main class="content">
+        <form id="billForm">
+            <div class="form-group">
+                <label for="custName">Customer Name</label>
+                <input type="text" id="custName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="invoice">Invoice Number</label>
+                <input type="text" id="invoice" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="product">Product Name</label>
+                <input type="text" id="product" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="quantity">Quantity (in Kg)</label>
+                <input type="number" id="quantity" step="0.1" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="rate">Rate per Kg (Rs.)</label>
+                <input type="number" id="rate" step="0.01" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="discount">Discount (%)</label>
+                <input type="number" id="discount" step="0.1" value="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="gst">GST (%)</label>
+                <input type="number" id="gst" step="0.1" value="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="packing">Packing Charges (Rs.)</label>
+                <input type="number" id="packing" step="0.01" value="0">
+            </div>
+            
+            <div class="form-group">
+                <label for="payment">Payment Mode</label>
+                <select id="payment">
+                    <option value="Cash">Cash</option>
+                    <option value="Card">Card</option>
+                    <option value="UPI">UPI</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="membership">Membership</label>
+                <select id="membership">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            
+            <button type="button" onclick="calculateBill()">Calculate Bill</button>
+        </form>
+
+        <!-- DISPLAY INVOICE SNAPSHOT -->
+        <div id="result">Fill out the form details above to display the invoice snapshot.</div>
+    </main>
+
+    <footer>Made by a Student &middot; SIT Nagpur</footer>
+
+    <script>
+        // INTERNAL JS (Inbuilt script inside the HTML file)
+        function calculateBill() {
+            // Reading input values - all inputs return strings, so we convert them
+            // using Number() to demonstrate type conversion
+            let custName = document.getElementById("custName").value; // string
+            let mobile = document.getElementById("mobile").value; // string
+            let invoice = document.getElementById("invoice").value; // string
+            let product = document.getElementById("product").value; // string
+            let quantity = Number(document.getElementById("quantity").value); // number
+            let rate = Number(document.getElementById("rate").value); // number
+            let discount = Number(document.getElementById("discount").value); // number
+            let gst = Number(document.getElementById("gst").value); // number
+            let packing = Number(document.getElementById("packing").value); // number
+            let payment = document.getElementById("payment").value; // string
+            let membership = document.getElementById("membership").value === "Yes"; // boolean
+
+            // Basic validation
+            if (!custName || !mobile || !invoice || !product || quantity <= 0 || rate <= 0) {
+                console.error("Validation failed: Please fill all required fields correctly.");
+                alert("Please fill all required fields with valid values.");
+                return;
+            }
+
+            // Calculation
+            const subtotal = quantity * rate;
+            const discountAmount = (subtotal * discount) / 100;
+            const afterDiscount = subtotal - discountAmount;
+            const gstAmount = (afterDiscount * gst) / 100;
+
+            // Extra membership discount (const used since this value won't change)
+            const membershipDiscount = membership ? afterDiscount * 0.05 : 0;
+            let totalBill = afterDiscount + gstAmount + packing - membershipDiscount;
+
+            console.log("----- Bill Calculation -----");
+            console.log("Customer: " + custName);
+            console.log("Subtotal: Rs. " + subtotal.toFixed(2));
+            console.log("Discount Amount: Rs. " + discountAmount.toFixed(2));
+            console.log("GST Amount: Rs. " + gstAmount.toFixed(2));
+            console.log("Membership Discount: Rs. " + membershipDiscount.toFixed(2));
+            console.log("Total Bill: Rs. " + totalBill.toFixed(2));
+
+            // Display result
+            document.getElementById("result").innerHTML = 
+                "<h3 style='margin-top:0; color:#2e7d32; border-bottom:1px dashed #2e7d32; padding-bottom:5px;'>INVOICE SNAPSHOT</h3>" +
+                "<p><strong>Customer:</strong> " + custName + " (" + mobile + ")</p>" +
+                "<p><strong>Invoice No:</strong> " + invoice + "</p>" +
+                "<p><strong>Product:</strong> " + product + " (" + quantity + " Kg)</p>" +
+                "<p><strong>Subtotal:</strong> Rs. " + subtotal.toFixed(2) + "</p>" +
+                "<p><strong>Discount:</strong> Rs. " + discountAmount.toFixed(2) + "</p>" +
+                "<p><strong>GST:</strong> Rs. " + gstAmount.toFixed(2) + "</p>" +
+                "<p><strong>Packing Charges:</strong> Rs. " + packing.toFixed(2) + "</p>" +
+                "<p><strong>Membership Discount:</strong> Rs. " + membershipDiscount.toFixed(2) + "</p>" +
+                "<p><strong>Payment Mode:</strong> " + payment + "</p>" +
+                "<p style='font-size:16px; margin-top:12px; padding-top:8px; border-top:1px dashed #2e7d32;'><strong>Total Bill: Rs. " + totalBill.toFixed(2) + "</strong></p>";
+        }
+    </script>
+</body>
+</html>

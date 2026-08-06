@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Billing Calculator</title>
+    <style>
+        body {
+            /* Changed background to soft light green */
+            background-color: #f0f7f4; 
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+        h2 {
+            /* Changed title to forest green */
+            color: #2e7d32; 
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 24px;
+            font-size: 15px;
+            /* Button styled in forest green */
+            background-color: #2e7d32; 
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            /* Darker green on hover */
+            background-color: #1b5e20; 
+        }
+        #receipt {
+            margin: 25px auto 0;
+            padding: 20px;
+            max-width: 400px;
+            font-size: 16px;
+            color: #333;
+            /* Light green card background for the receipt output */
+            background-color: #e8f5e9; 
+            border-left: 5px solid #2e7d32;
+            border-radius: 4px;
+            line-height: 1.6;
+            text-align: left;
+            display: none; /* Hidden until generation */
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Billing Calculator</h2>
+    
+    <!-- Trigger Button for Inputs -->
+    <button onclick="generateBill()">Generate New Receipt</button>
+    
+    <!-- Receipt Container -->
+    <div id="receipt"></div>
+
+    <script>
+        function generateBill() {
+            // const example
+            const GST = 0.18;
+
+            // User Input via prompts
+            var customerName = prompt("Enter Customer Name:");
+            var productName = prompt("Enter Product Name:");
+            
+            // var example
+            var quantity = Number(prompt("Enter Quantity:"));
+            // let example
+            let price = Number(prompt("Enter Price per Item:"));
+
+            // Validation check
+            if (!customerName || !productName || isNaN(quantity) || quantity <= 0 || isNaN(price) || price <= 0) {
+                alert("Please enter valid billing details!");
+                return;
+            }
+
+            // Calculations
+            let total = quantity * price;
+            let gstAmount = total * GST;
+            let finalBill = total + gstAmount;
+
+            // Object Packing
+            const bill = {
+                customer: customerName,
+                product: productName,
+                quantity,
+                price,
+                total,
+                gstAmount,
+                finalBill
+            };
+
+            // Destructuring (Fixed the typo from 'amountz' to match 'amount' output safely)
+            const { customer, product, gstAmount: gst, finalBill: amount } = bill;
+
+            // Output container reference
+            const receiptDiv = document.getElementById("receipt");
+
+            // Output Generation using Template Literals
+            receiptDiv.innerHTML = `
+                <h3 style="margin-top:0; color:#2e7d32; border-bottom:1px dashed #2e7d32; padding-bottom:5px;">BILLING RECEIPT</h3>
+                <p><strong>Customer:</strong> ${customer}</p>
+                <p><strong>Product:</strong> ${product}</p>
+                <p><strong>Quantity:</strong> ${quantity}</p>
+                <p><strong>Price per Item:</strong> ₹${price.toFixed(2)}</p>
+                <p><strong>GST (18%):</strong> ₹${gst.toFixed(2)}</p>
+                <p style="font-size:17px; margin-top:12px; padding-top:8px; border-top:1px dashed #2e7d32;"><strong>Final Bill: ₹${amount.toFixed(2)}</strong></p>
+            `;
+
+            // Make receipt visible on page
+            receiptDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
