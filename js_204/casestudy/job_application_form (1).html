@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Job Application Form</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --accent-color: #d91b5c;
+            --success-color: #198754;
+            --error-color: #dc3545;
+            --bg-color: #f4f7f6;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --border-color: #ced4da;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: var(--card-bg);
+            max-width: 750px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-top: 10px solid var(--primary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        fieldset {
+            border: 2px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background-color: #fffdfd;
+        }
+
+        legend {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.15rem;
+            padding: 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        label.required::after {
+            content: " *";
+            color: var(--error-color);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            outline: none;
+            background-color: #fafafa;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(0, 86, 179, 0.3);
+            background-color: #fff;
+        }
+
+        /* Radio buttons styling */
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            padding-top: 5px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-weight: normal;
+            color: var(--text-color);
+        }
+
+        .radio-label input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-color);
+        }
+
+        /* Validation UI States */
+        .form-group.success input,
+        .form-group.success select {
+            border-color: var(--success-color);
+            background-color: #e8f5e9;
+        }
+
+        .form-group.error input,
+        .form-group.error select {
+            border-color: var(--error-color);
+            background-color: #fffe0e0;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        /* Submit Button */
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
+        }
+
+        button[type="submit"]:hover {
+            background-color: #004085;
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.99);
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Job Application Form</h1>
+    <p class="subtitle">Please provide accurate info. Real-time validation active.</p>
+
+    <form id="jobAppForm" novalidate>
+        
+        <!-- Personal Information -->
+        <fieldset>
+            <legend>Personal Information</legend>
+            
+            <div class="form-group" data-validator="name">
+                <label for="fullName" class="required">Full Name</label>
+                <input type="text" id="fullName" placeholder="John Doe">
+                <div class="error-message">Name must be at least 3 letters long.</div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group" data-validator="dob">
+                    <label for="dob" class="required">Date of Birth</label>
+                    <input type="date" id="dob">
+                    <div class="error-message">You must be at least 18 years old.</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="required">Gender</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="gender" value="Male" checked> Male</label>
+                        <label class="radio-label"><input type="radio" name="gender" value="Female"> Female</label>
+                        <label class="radio-label"><input type="radio" name="gender" value="Other"> Other</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group" data-validator="email">
+                    <label for="email" class="required">Email Address</label>
+                    <input type="email" id="email" placeholder="example@domain.com">
+                    <div class="error-message">Please enter a valid email address.</div>
+                </div>
+
+                <div class="form-group" data-validator="mobile">
+                    <label for="mobile" class="required">Mobile Number</label>
+                    <input type="text" id="mobile" placeholder="10-digit number" maxlength="10">
+                    <div class="error-message">Enter a valid 10-digit mobile number.</div>
+                </div>
+            </div>
+
+            <div class="form-group" data-validator="required">
+                <label for="streetAddress" class="required">Street Address</label>
+                <input type="text" id="streetAddress" placeholder="Apartment, suite, unit, building, floor, street">
+                <div class="error-message">Street address cannot be left empty.</div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group" data-validator="required">
+                    <label for="city" class="required">City</label>
+                    <input type="text" id="city" placeholder="City">
+                    <div class="error-message">City is required.</div>
+                </div>
+
+                <div class="form-group" data-validator="required">
+                    <label for="state" class="required">State</label>
+                    <input type="text" id="state" placeholder="State">
+                    <div class="error-message">State is required.</div>
+                </div>
+
+                <div class="form-group" data-validator="pin">
+                    <label for="pinCode" class="required">PIN Code</label>
+                    <input type="text" id="pinCode" placeholder="6 digits" maxlength="6">
+                    <div class="error-message">Enter a valid 6-digit PIN code.</div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Educational Qualification -->
+        <fieldset>
+            <legend>Educational Qualification</legend>
+
+            <div class="form-row">
+                <div class="form-group" data-validator="select">
+                    <label for="highestQual" class="required">Highest Qualification</label>
+                    <select id="highestQual">
+                        <option value="">-- Select Degree --</option>
+                        <option value="High School">High School</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="Bachelors">Bachelor's Degree</option>
+                        <option value="Masters">Master's Degree</option>
+                        <option value="PhD">Ph.D. or Higher</option>
+                    </select>
+                    <div class="error-message">Please select your highest qualification.</div>
+                </div>
+
+                <div class="form-group" data-validator="required">
+                    <label for="institute" class="required">University / Institute</label>
+                    <input type="text" id="institute" placeholder="College or School Name">
+                    <div class="error-message">Institute name is required.</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group" data-validator="year">
+                    <label for="passingYear" class="required">Passing Year</label>
+                    <input type="number" id="passingYear" placeholder="YYYY" min="1970" max="2030">
+                    <div class="error-message">Enter a year between 1970 and 2030.</div>
+                </div>
+
+                <div class="form-group" data-validator="grade">
+                    <label for="percentage" class="required">Percentage / CGPA</label>
+                    <input type="text" id="percentage" placeholder="e.g., 85% or 8.5">
+                    <div class="error-message">Enter a valid percentage (0-100) or CGPA (0-10).</div>
+                </div>
+            </div>
+        </fieldset>
+
+        <!-- Professional Information -->
+        <fieldset>
+            <legend>Professional Info</legend>
+
+            <div class="form-row">
+                <div class="form-group" data-validator="required">
+                    <label for="jobPosition" class="required">Applying For (Job Position)</label>
+                    <input type="text" id="jobPosition" placeholder="e.g., Software Engineer">
+                    <div class="error-message">Please enter the position you want to apply for.</div>
+                </div>
+
+                <div class="form-group" data-validator="exp">
+                    <label for="experience" class="required">Total Work Experience (Years)</label>
+                    <input type="number" id="experience" placeholder="0 if fresher" min="0" max="50" step="0.5">
+                    <div class="error-message">Enter a valid number of years (0 to 50).</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group" data-validator="required">
+                    <label for="organization" class="required">Current / Previous Organization</label>
+                    <input type="text" id="organization" placeholder="Company Name or 'NA'">
+                    <div class="error-message">Organization name or 'NA' is required.</div>
+                </div>
+
+                <div class="form-group" data-validator="required">
+                    <label for="designation" class="required">Current Designation</label>
+                    <input type="text" id="designation" placeholder="Job Title or 'NA'">
+                    <div class="error-message">Designation or 'NA' is required.</div>
+                </div>
+            </div>
+
+            <div class="form-group" data-validator="required">
+                <label for="salary" class="required">Expected Salary</label>
+                <input type="text" id="salary" placeholder="e.g., ₹5,00,000 / $70,000">
+                <div class="error-message">Expected salary is required.</div>
+            </div>
+        </fieldset>
+
+        <!-- Technical Skills -->
+        <fieldset>
+            <legend>Technical Skills</legend>
+
+            <div class="form-group" data-validator="required">
+                <label for="progLanguages" class="required">Programming Languages</label>
+                <input type="text" id="progLanguages" placeholder="e.g., HTML, CSS, JavaScript, Python">
+                <div class="error-message">Please mention at least one programming language.</div>
+            </div>
+
+            <div class="form-group" data-validator="required">
+                <label for="techSkills" class="required">Other Technical Skills</label>
+                <input type="text" id="techSkills" placeholder="e.g., Git, AWS, Database Management">
+                <div class="error-message">Please list your technical skills.</div>
+            </div>
+
+            <div class="form-group">
+                <label for="certifications">Certifications (Optional)</label>
+                <input type="text" id="certifications" placeholder="e.g., AWS Certified Solutions Architect">
+            </div>
+        </fieldset>
+
+        <button type="submit">Submit Application</button>
+    </form>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("jobAppForm");
+        
+        // Define validation functions
+        const validators = {
+            name: (val) => val.trim().length >= 3,
+            required: (val) => val.trim() !== "",
+            select: (val) => val !== "",
+            email: (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()),
+            mobile: (val) => /^\d{10}$/.test(val.trim()),
+            pin: (val) => /^\d{6}$/.test(val.trim()),
+            year: (val) => {
+                const year = parseInt(val, 10);
+                return !isNaN(year) && year >= 1970 && year <= 2030;
+            },
+            grade: (val) => {
+                const num = parseFloat(val.replace('%', '').trim());
+                if (isNaN(num)) return false;
+                // Treat as CGPA (0 to 10) or Percentage (0 to 100)
+                return (num >= 0 && num <= 10) || (num > 10 && num <= 100);
+            },
+            exp: (val) => {
+                const exp = parseFloat(val);
+                return !isNaN(exp) && exp >= 0 && exp <= 50;
+            },
+            dob: (val) => {
+                if (!val) return false;
+                const birthDate = new Date(val);
+                const today = new Date();
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const m = today.getMonth() - birthDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                return age >= 18;
+            }
+        };
+
+        // Function to validate a single field component element wrapper group
+        function validateFieldGroup(group) {
+            const type = group.getAttribute("data-validator");
+            if (!type || !validators[type]) return true;
+
+            const input = group.querySelector("input, select");
+            if (!input) return true;
+
+            const isValid = validators[type](input.value);
+            
+            if (isValid) {
+                group.classList.remove("error");
+                group.classList.add("success");
+            } else {
+                group.classList.remove("success");
+                group.classList.add("error");
+            }
+            return isValid;
+        }
+
+        // Attach listeners for dynamic input checking (immediate validation)
+        const validatedGroups = document.querySelectorAll("[data-validator]");
+        validatedGroups.forEach(group => {
+            const input = group.querySelector("input, select");
+            
+            // Validate on leaving the field
+            input.addEventListener("blur", () => {
+                validateFieldGroup(group);
+            });
+
+            // Re-validate instantly as they type if it already has an error or success status
+            input.addEventListener("input", () => {
+                if (group.classList.contains("error") || group.classList.contains("success")) {
+                    validateFieldGroup(group);
+                }
+            });
+        });
+
+        // Intercept form submission
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            let isFormValid = true;
+
+            // Validate all fields
+            validatedGroups.forEach(group => {
+                const isValid = validateFieldGroup(group);
+                if (!isValid) {
+                    isFormValid = false;
+                }
+            });
+
+            if (isFormValid) {
+                alert("🎉 Application submitted successfully! All data fields are valid.");
+                form.reset();
+                // Clear success borders
+                validatedGroups.forEach(group => group.classList.remove("success"));
+            } else {
+                // Focus on the first error element
+                const firstError = document.querySelector(".form-group.error input, .form-group.error select");
+                if (firstError) firstError.focus();
+                alert("⚠️ Cannot submit form. Please correct the highlighted errors first.");
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
