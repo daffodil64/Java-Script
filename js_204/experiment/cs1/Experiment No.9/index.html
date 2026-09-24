@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Preference Storage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-light">
+
+    <div class="settings-card">
+        <h2>Preferences Manager</h2>
+        
+        <!-- Theme Selection Element -->
+        <div class="setting-group">
+            <label for="themeSelect">Select Theme:</label>
+            <select id="themeSelect">
+                <option value="theme-light">Light Mode</option>
+                <option value="theme-dark">Dark Mode</option>
+                <option value="theme-blue">Ocean Blue</option>
+            </select>
+        </div>
+
+        <!-- Storage Action Controls -->
+        <div class="actions-container">
+            <button id="saveLocalBtn" class="btn btn-local">
+                💾 Save to LocalStorage
+            </button>
+            <p class="desc-text">Survives browser restarts.</p>
+
+            <button id="saveSessionBtn" class="btn btn-session">
+                ⏱️ Save to SessionStorage
+            </button>
+            <p class="desc-text">Cleared when you close this tab.</p>
+
+            <button id="clearPrefsBtn" class="btn btn-clear">
+                ❌ Clear All Preferences
+            </button>
+        </div>
+        
+        <!-- Status log to trace internal actions -->
+        <div id="statusLog" class="status-box">No actions logged yet.</div>
+
+        <!-- Author Signature -->
+        <div class="signature">Created by Chhatrapati Supare</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

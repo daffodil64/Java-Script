@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopKart - Online Shopping</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+        <div class="navbar-inner">
+            <div class="logo">🛒 Shop<span>Kart</span></div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for products, brands and more" />
+                <button id="searchBtn">🔍</button>
+            </div>
+            <div class="nav-actions">
+                <span class="cart-count">Cart (<span id="cartCount">0</span>)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== CATEGORY NAVIGATION ===== -->
+    <nav class="category-nav">
+        <button class="cat-btn active" data-cat="all">🗂️ All</button>
+        <button class="cat-btn" data-cat="electronics">📱 Electronics</button>
+        <button class="cat-btn" data-cat="appliance">📺 Appliances</button>
+        <button class="cat-btn" data-cat="grocery">🛒 Grocery</button>
+        <button class="cat-btn" data-cat="fashion">👕 Fashion</button>
+        <button class="cat-btn" data-cat="accessories">🔌 Accessories</button>
+    </nav>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main">
+        <div class="container">
+
+            <!-- ===== PRODUCT LISTING (left) ===== -->
+            <section class="products-section">
+                <h2 class="section-title" id="sectionTitle">Deals of the Day</h2>
+                <div id="productGrid" class="product-grid">
+                    <!-- Product cards injected here by JavaScript.js -->
+                </div>
+            </section>
+
+            <!-- ===== CART / CHECKOUT (right sidebar) ===== -->
+            <aside class="cart-panel">
+                <h2 class="cart-title">Your Cart</h2>
+
+                <div class="delivery-to">
+                    <span>Deliver to:</span>
+                    <strong>Home</strong> 📍
+                </div>
+
+                <!-- Cart items -->
+                <div id="cartItems" class="cart-items">
+                    <!-- Cart items injected here by JavaScript.js -->
+                </div>
+
+                <!-- Coupon / Offer -->
+                <div class="coupon-box">
+                    <label>Apply Coupon</label>
+                    <div class="coupon-row">
+<input type="text" id="couponInput" placeholder="e.g. BOSS, SAVE10, FLAT200" />
+                        <button id="applyCouponBtn" class="btn-coupon">Apply</button>
+                    </div>
+                    <div id="couponMsg" class="coupon-msg"></div>
+                </div>
+
+                <!-- Price Details -->
+                <div class="price-details">
+                    <h3>PRICE DETAILS</h3>
+                    <div class="price-row">
+                        <span>Price (N items)</span>
+                        <span id="priceItems">₹0</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Tier Discount</span>
+                        <span id="discountVal" class="green">- ₹0</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Coupon Savings</span>
+                        <span id="couponVal" class="green">- ₹0</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Delivery Charges</span>
+                        <span id="deliveryVal" class="green">FREE</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total Amount</span>
+                        <span id="grandTotal">₹0</span>
+                    </div>
+                    <div class="savings-msg" id="savingsMsg">You will save ₹0 on this order</div>
+                </div>
+
+                <button id="placeOrderBtn" class="btn-place-order">PLACE ORDER</button>
+            </aside>
+</div>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>🛒 ShopKart — Created by <strong>Chhatrapati Supare</strong></p>
+    </footer>
+
+    <script src="JavaScript.js"></script>
+</body>
+</html>

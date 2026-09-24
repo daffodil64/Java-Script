@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.settings-card {
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    background: var(--card-bg, #ffffff);
+    width: 320px;
+}
+
+.setting-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.desc-text {
+    margin: 0 0 15px 0;
+    font-size: 12px;
+    opacity: 0.7;
+    padding-left: 2px;
+}
+
+/* Button Configurations */
+.btn {
+    width: 100%;
+    padding: 12px;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn-local { background-color: #059669; }
+.btn-local:hover { background-color: #047857; }
+
+.btn-session { background-color: #2563eb; }
+.btn-session:hover { background-color: #1d4ed8; }
+
+.btn-clear { background-color: #dc2626; margin-top: 10px;}
+.btn-clear:hover { background-color: #b91c1c; }
+
+.status-box {
+    margin-top: 20px;
+    padding: 10px;
+    background: rgba(0,0,0,0.05);
+    border-radius: 4px;
+    font-size: 13px;
+    text-align: center;
+    border-left: 4px solid #9ca3af;
+}
+
+/* Theme Configurations */
+.theme-light {
+    background-color: #f3f4f6;
+    color: #1f2937;
+    --card-bg: #ffffff;
+}
+
+.theme-dark {
+    background-color: #111827;
+    color: #f9fafb;
+    --card-bg: #1f2937;
+}
+
+.theme-blue {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    --card-bg: #f0f9ff;
+}
+
+/* Author Signature Styling */
+.signature {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    font-size: 11px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+}
+
+.theme-dark .signature {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}

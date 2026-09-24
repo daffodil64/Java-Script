@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String & Regex Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>String &amp; Regex Analyzer</h1>
+        <p>Validate formatting, run text extraction rules, and parse analytics instantly.</p>
+    </header>
+
+    <div class="dashboard">
+
+        <div class="left-column">
+
+            <section class="card">
+                <h2>📍 Live Email Validation</h2>
+
+                <input
+                    id="emailInput"
+                    type="text"
+                    value=""
+                    placeholder="Enter email"
+                >
+
+                <div id="emailStatus" class="status valid">
+                    ✓ Structured Valid Email Format
+                </div>
+            </section>
+
+            <section class="card source-card">
+
+                <div class="section-title">
+                    <h2>📄 Unstructured Source Text</h2>
+                    <button id="sampleBtn" class="link-button">
+                        Load Sample Text
+                    </button>
+                </div>
+
+                <textarea id="sourceText">For database architecture issues, ping Daffodil Tembhurkar at daffodil.Tembhurkar.batch2024@sitnagpur.siu.edu.in or call 800-555-0199.
+
+The backup service email is backup-service@cloud-infra.net. We also found an old file log from 2024-12-01. Please call the alternate helpline 555-123-4567 if the primary line is busy. Teamwork makes the dream work.</textarea>
+
+                <button id="processBtn" class="process-button">
+                    Process &amp; Analyze Text
+                </button>
+
+            </section>
+
+        </div>
+
+        <div class="right-column">
+
+            <section class="card extracted-card">
+                <h2>🔍 Extracted Patterns</h2>
+
+                <label>DETECTED EMAILS</label>
+                <div id="emails" class="result-box emails">—</div>
+
+                <label>DETECTED PHONE NUMBERS</label>
+                <div id="phones" class="result-box phones">—</div>
+
+                <label>DETECTED DATES (YYYY-MM-DD)</label>
+                <div id="dates" class="result-box dates">—</div>
+            </section>
+
+            <section class="card metrics-card">
+                <h2>📊 Text Metrics Dashboard</h2>
+
+                <div class="metrics">
+
+                    <div class="metric">
+                        <span>Total Words</span>
+                        <strong id="totalWords">0</strong>
+                    </div>
+
+                    <div class="metric">
+                        <span>Unique Words</span>
+                        <strong id="uniqueWords">0</strong>
+                    </div>
+
+                </div>
+
+                <label>TOP 5 MOST FREQUENT WORDS</label>
+                <div id="frequencyList" class="frequency-list"></div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+    <footer>
+        Created by <strong>Daffodil Tembhurkar</strong>
+    </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
