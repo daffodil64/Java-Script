@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Arrays & Loops</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📊 Interactive Arrays & Loops</h1>
+        <p>Explore JavaScript Array Methods in Real Time</p>
+    </header>
+    <main class="container">
+        <section class="section">
+            <h2>1. Interactive Array</h2>
+            <p>
+                Add numbers and experiment with different
+                JavaScript array manipulation methods.
+            </p>
+            <div id="mainArray" class="array-display"></div>
+            <input
+                type="number"
+                id="numberInput"
+                placeholder="Enter a number"
+            >
+            <button onclick="addNumber()">
+                Add Number
+            </button>
+            <button onclick="removeLast()" class="danger">
+                pop()
+            </button>
+            <button onclick="removeFirst()" class="danger">
+                shift()
+            </button>
+            <button onclick="addBeginning()" class="green">
+                unshift()
+            </button>
+            <button onclick="clearArray()" class="danger">
+                Clear Array
+            </button>
+        </section>
+        <section class="section">
+            <h2>2. Array Manipulation Methods</h2>
+            <div class="operation-box">
+                <h3>splice()</h3>
+                <p>
+                    Replace an element at a selected position.
+                </p>
+                <input
+                    type="number"
+                    id="spliceIndex"
+                    placeholder="Index"
+                    min="0"
+                >
+                <input
+                    type="number"
+                    id="spliceValue"
+                    placeholder="New Value"
+                >
+                <button onclick="spliceArray()">
+                    Apply splice()
+                </button>
+            </div>
+            <div class="operation-box">
+                <h3>slice()</h3>
+                <p>
+                    Extract a portion of the array without
+                    modifying the original array.
+                </p>
+                <input
+                    type="number"
+                    id="sliceStart"
+                    placeholder="Start"
+                    min="0"
+                >
+                <input
+                    type="number"
+                    id="sliceEnd"
+                    placeholder="End"
+                    min="0"
+                >
+                <button onclick="sliceArray()">
+                    Apply slice()
+                </button>
+            </div>
+            <div id="manipulationOutput" class="output">
+                Select an operation to see its result.
+            </div>
+        </section>
+        <section class="section">
+            <h2>3. Array Iteration Methods</h2>
+            <p>
+                Choose an operation to process the current array.
+            </p>
+            <div class="method-buttons">
+                <button onclick="runMap()">
+                    map()
+                </button>
+                <button onclick="runFilter()">
+                    filter()
+                </button>
+                <button onclick="runReduce()">
+                    reduce()
+                </button>
+                <button onclick="runForEach()">
+                    forEach()
+                </button>
+            </div>
+            <div id="iterationOutput" class="output">
+                Click a method to see how it works.
+            </div>
+        </section>
+        <section class="section case-study">
+            <h2>4. Case Study: Maximum & Minimum</h2>
+            <p>
+                Find the maximum and minimum values from:
+            </p>
+            <div class="array-display">
+                [25, 10, 45, 5, 30, 15]
+            </div>
+            <button onclick="runCaseStudy()">
+                🔍 Find Maximum & Minimum
+            </button>
+            <div class="result-grid">
+                <div class="result-card">
+                    <h3>Maximum Value</h3>
+                    <strong id="maximum">-</strong>
+                </div>
+                <div class="result-card">
+                    <h3>Minimum Value</h3>
+                    <strong id="minimum">-</strong>
+                </div>
+            </div>
+            <div id="caseStudyOutput" class="output">
+                Click the button to calculate the result.
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>
+            JavaScript Practical — Arrays and Loops
+        </p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

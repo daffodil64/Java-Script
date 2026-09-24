@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Location Tracker</title>
+
+
+    <!-- Leaflet CSS -->
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+
+    <!-- Our CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <h1>Smart Location Tracker</h1>
+
+        <p>
+            Real-Time GPS Location Monitoring System
+        </p>
+
+    </header>
+
+
+    <!-- =========================
+         BUTTONS
+    ========================== -->
+
+    <div class="buttons">
+
+        <button
+            id="startBtn"
+            class="start-btn">
+
+            Start Tracking
+
+        </button>
+
+
+        <button
+            id="stopBtn"
+            class="stop-btn">
+
+            Stop Tracking
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         MAP
+    ========================== -->
+
+    <section class="map-card">
+
+        <h2>🗺️ Live Location Map</h2>
+
+        <div id="map"></div>
+
+    </section>
+
+
+    <!-- =========================
+         CURRENT LOCATION
+    ========================== -->
+
+    <div class="dashboard">
+
+
+        <div class="card">
+
+            <h2>📍 GPS Location</h2>
+
+
+            <p>
+                Latitude:
+                <span
+                    id="latitude"
+                    class="value">
+                    --
+                </span>
+            </p>
+
+
+            <p>
+                Longitude:
+                <span
+                    id="longitude"
+                    class="value">
+                    --
+                </span>
+            </p>
+
+
+            <p>
+                Accuracy:
+                <span
+                    id="accuracy"
+                    class="value">
+                    --
+                </span>
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             ADDRESS
+        ========================== -->
+
+        <div class="card">
+
+            <h2>🏠 Detected Address</h2>
+
+            <p
+                id="locationName"
+                class="address">
+
+                Waiting for location...
+
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             MOVEMENT
+        ========================== -->
+
+        <div class="card">
+
+            <h2>🚶 Movement</h2>
+
+
+            <div
+                id="movementStatus"
+                class="status">
+
+                Not Tracking
+
+            </div>
+
+
+            <p>
+
+                Speed:
+
+                <span
+                    id="speed"
+                    class="value">
+
+                    --
+
+                </span>
+
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             DISTANCE
+        ========================== -->
+
+        <div class="card">
+
+            <h2>📏 Distance</h2>
+
+
+            <p>
+
+                Travelled:
+
+                <span
+                    id="distance"
+                    class="value">
+
+                    0 m
+
+                </span>
+
+            </p>
+
+
+            <p>
+
+                Tracking:
+
+                <span
+                    id="trackingMode"
+                    class="value">
+
+                    Normal
+
+                </span>
+
+            </p>
+
+        </div>
+
+
+        <!-- =========================
+             INSTITUTE DISTANCE
+        ========================== -->
+
+        <div class="card">
+
+            <h2>🏫 Institute</h2>
+
+
+            <p>
+
+                Symbiosis Institute of Technology
+
+            </p>
+
+
+            <p>
+
+                Distance:
+
+                <span
+                    id="instituteDistance"
+                    class="value">
+
+                    --
+
+                </span>
+
+            </p>
+
+
+            <div
+                id="instituteStatus"
+                class="status">
+
+                Waiting for location
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             LOCATION ALERT
+        ========================== -->
+
+        <div class="card">
+
+            <h2>⚠️ Location Alert</h2>
+
+
+            <div
+                id="alertMessage"
+                class="alert">
+
+                No location changes detected.
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         GEOFENCE
+    ========================== -->
+
+    <section class="card">
+
+        <h2>🏠 Geofencing</h2>
+
+
+        <p>
+
+            Create a safe area around your current location.
+
+        </p>
+
+
+        <label for="radius">
+
+            Radius in meters:
+
+        </label>
+
+
+        <input
+            type="number"
+            id="radius"
+            value="100"
+            min="10"
+        >
+
+
+        <button
+            id="setGeofenceBtn"
+            class="blue-btn">
+
+            Set Geofence
+
+        </button>
+
+
+        <div
+            id="geofenceStatus"
+            class="status">
+
+            Geofence not set
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         HISTORY
+    ========================== -->
+
+    <section class="history">
+
+        <h2>🕐 Location History</h2>
+
+
+        <div
+            id="historyList"
+            class="history-list">
+
+            <p>
+                No location history yet.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EMERGENCY
+    ========================== -->
+
+    <section class="emergency">
+
+        <h2>🆘 Emergency Location</h2>
+
+
+        <p>
+
+            Generate a Google Maps link
+            containing your current location.
+
+        </p>
+
+
+        <button
+            id="emergencyBtn"
+            class="emergency-btn">
+
+            Get Emergency Location
+
+        </button>
+
+
+        <p id="emergencyResult"></p>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        Smart Location Tracker
+
+    </footer>
+
+
+</div>
+
+
+<!-- =========================
+     LEAFLET JS
+========================== -->
+
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
+<!-- =========================
+     OUR JAVASCRIPT
+========================== -->
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

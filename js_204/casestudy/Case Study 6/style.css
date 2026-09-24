@@ -1,0 +1,500 @@
+/* =========================================
+   BASIC SETTINGS
+========================================= */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background: #f1f5f9;
+
+    color: #333;
+
+    padding: 20px;
+
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+header h1 {
+
+    font-size: 32px;
+
+    margin-bottom: 8px;
+
+    color: #1e293b;
+
+}
+
+
+header p {
+
+    color: #64748b;
+
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.buttons {
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+button {
+
+    border: none;
+
+    padding: 12px 20px;
+
+    margin: 5px;
+
+    border-radius: 6px;
+
+    color: white;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.start-btn {
+
+    background: #16a34a;
+
+}
+
+
+.start-btn:hover {
+
+    background: #15803d;
+
+}
+
+
+.stop-btn {
+
+    background: #dc2626;
+
+}
+
+
+.stop-btn:hover {
+
+    background: #b91c1c;
+
+}
+
+
+.blue-btn {
+
+    background: #2563eb;
+
+}
+
+
+.blue-btn:hover {
+
+    background: #1d4ed8;
+
+}
+
+
+.emergency-btn {
+
+    background: #991b1b;
+
+    width: 100%;
+
+}
+
+
+.emergency-btn:hover {
+
+    background: #7f1d1d;
+
+}
+
+
+/* =========================================
+   MAP
+========================================= */
+
+.map-card {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 20px;
+
+}
+
+
+.map-card h2 {
+
+    margin-bottom: 15px;
+
+}
+
+
+#map {
+
+    width: 100%;
+
+    height: 450px;
+
+    border-radius: 8px;
+
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+
+    margin-top: 20px;
+
+}
+
+
+.card h2 {
+
+    font-size: 18px;
+
+    margin-bottom: 15px;
+
+    color: #1e293b;
+
+}
+
+
+.card p {
+
+    margin: 9px 0;
+
+    line-height: 1.5;
+
+}
+
+
+/* =========================================
+   VALUES
+========================================= */
+
+.value {
+
+    color: #2563eb;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   ADDRESS
+========================================= */
+
+.address {
+
+    color: #475569;
+
+    font-size: 14px;
+
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status {
+
+    padding: 10px;
+
+    border-radius: 6px;
+
+    background: #f1f5f9;
+
+    text-align: center;
+
+    font-weight: bold;
+
+    margin-top: 10px;
+
+}
+
+
+/* =========================================
+   ALERT
+========================================= */
+
+.alert {
+
+    background: #fff7ed;
+
+    border: 1px solid #fed7aa;
+
+    padding: 12px;
+
+    border-radius: 6px;
+
+    color: #9a3412;
+
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+input {
+
+    width: 100%;
+
+    padding: 11px;
+
+    margin-top: 10px;
+
+    margin-bottom: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================
+   HISTORY
+========================================= */
+
+.history {
+
+    margin-top: 25px;
+
+}
+
+
+.history h2 {
+
+    margin-bottom: 10px;
+
+}
+
+
+.history-list {
+
+    background: white;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+
+    max-height: 300px;
+
+    overflow-y: auto;
+
+}
+
+
+.history-item {
+
+    padding: 10px;
+
+    border-bottom:
+        1px solid #e2e8f0;
+
+    font-size: 14px;
+
+}
+
+
+.history-item:last-child {
+
+    border-bottom: none;
+
+}
+
+
+/* =========================================
+   EMERGENCY
+========================================= */
+
+.emergency {
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.08);
+
+    margin-top: 25px;
+
+}
+
+
+#emergencyResult {
+
+    margin-top: 15px;
+
+    line-height: 1.7;
+
+}
+
+
+#emergencyResult a {
+
+    color: #2563eb;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    text-align: center;
+
+    color: #64748b;
+
+    margin-top: 30px;
+
+    padding: 20px;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+    body {
+
+        padding: 12px;
+
+    }
+
+
+    header h1 {
+
+        font-size: 25px;
+
+    }
+
+
+    .dashboard {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    #map {
+
+        height: 350px;
+
+    }
+
+
+    button {
+
+        width: 100%;
+
+        margin: 5px 0;
+
+    }
+
+}

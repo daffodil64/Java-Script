@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f6f8;
+    color: #222;
+}
+header {
+    background: #1f4e79;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+header p {
+    margin-bottom: 0;
+    color: #dbe9f4;
+}
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 25px auto;
+}
+.section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, 0.08);
+}
+.section h2 {
+    color: #1f4e79;
+    margin-top: 0;
+}
+.array-display {
+    background: #17202a;
+    color: #58d68d;
+    padding: 18px;
+    border-radius: 8px;
+    font-family: monospace;
+    font-size: 18px;
+    margin: 15px 0;
+    text-align: center;
+}
+input,
+select {
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    margin: 5px;
+    outline: none;
+}
+input:focus {
+    border-color: #1f4e79;
+}
+button {
+    padding: 11px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    background: #1f4e79;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+button:hover {
+    background: #163a5c;
+    transform: translateY(-1px);
+}
+.danger {
+    background: #c0392b;
+}
+.danger:hover {
+    background: #922b21;
+}
+.green {
+    background: #278b57;
+}
+.green:hover {
+    background: #1e6d44;
+}
+.operation-box {
+    margin-top: 20px;
+    padding: 18px;
+    background: #eef4f8;
+    border-radius: 8px;
+}
+.operation-box h3 {
+    color: #1f4e79;
+    margin-top: 0;
+}
+.output {
+    background: #f0f0f0;
+    padding: 18px;
+    border-radius: 8px;
+    margin-top: 15px;
+    white-space: pre-line;
+    font-family: monospace;
+    line-height: 1.6;
+    min-height: 50px;
+}
+.method-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.case-study {
+    border-left: 6px solid #1f4e79;
+}
+.result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+.result-card {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    background: #eef4f8;
+}
+.result-card h3 {
+    margin: 0 0 10px;
+}
+.result-card strong {
+    font-size: 30px;
+    color: #1f4e79;
+}
+footer {
+    text-align: center;
+    background: #1f4e79;
+    color: white;
+    padding: 18px;
+    margin-top: 40px;
+}
+@media (max-width: 700px) {
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+    .container {
+        width: 94%;
+    }
+    input {
+        width: 90%;
+    }
+}
